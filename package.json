@@ -1,0 +1,61 @@
+{
+  "name": "sitelens",
+  "version": "0.1.0",
+  "description": "An evidence-first open-source website analysis agent. Chat with pages, inspect technologies, and run real Lighthouse and CrUX audits.",
+  "scripts": {
+    "dev": "tsx watch server/index.ts",
+    "build": "tsc --noEmit && vite build",
+    "start": "tsx server/production.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "browser:install": "playwright install chromium",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "keywords": [
+    "agent",
+    "lighthouse",
+    "seo",
+    "core-web-vitals",
+    "ai",
+    "website-analysis"
+  ],
+  "author": "",
+  "license": "MIT",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22.19"
+  },
+  "dependencies": {
+    "@ai-sdk/openai": "^4.0.111",
+    "@ai-sdk/openai-compatible": "^3.0.87",
+    "ai": "^7.0.165",
+    "cheerio": "^1.2.0",
+    "chrome-launcher": "^1.2.3",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
+    "express-rate-limit": "^8.7.3",
+    "ipaddr.js": "^2.5.0",
+    "lighthouse": "^13.6.0",
+    "lucide-react": "^1.70.0",
+    "playwright": "^1.65.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-markdown": "^10.1.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.65.0",
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.2.1",
+    "prettier": "^3.9.10",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.6",
+    "vitest": "^5.1.0"
+  }
+}
