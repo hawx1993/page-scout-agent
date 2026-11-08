@@ -46,6 +46,8 @@ import {
 import { loadModelSettings, saveModelSettings, type ModelSettings } from './model-settings';
 import { providers } from '../shared/models';
 import { ModelSettingsModal } from './components/ModelSettings';
+import { AgentComposer } from './components/AgentComposer';
+import { prepareCommand } from './slash-commands';
 import { HelpModal } from './components/HelpModal';
 
 type Tab = 'overview' | 'content' | 'performance' | 'seo' | 'tech' | 'security';
@@ -228,13 +230,26 @@ export default function App() {
   }
   async function ask(question = draft) {
     if (active.current || !question.trim()) return;
+    const command = prepareCommand(question);
+    if (command.error) {
+      setError(command.error);
+      return;
+    }
+    if (command.requiresPage && !report) {
+      setError('请先输入 URL 分析网页，再执行网页快捷命令。');
+      return;
+    }
+    if (command.requiresModel && !ai) {
+      setShowModels(true);
+      return;
+    }
     if ((!ai && !report) || (modelSettings.active !== 'server' && !selectedProfile?.apiKey)) {
       setShowModels(true);
       return;
     }
     setChatOpen(true);
     setDraft('');
-    const user: ChatMessage = { id: crypto.randomUUID(), role: 'user', content: question.trim() };
+    const user: ChatMessage = { id: crypto.randomUUID(), role: 'user', content: command.prompt };
     const assistantId = crypto.randomUUID();
     const conversation = [...messages, user].slice(-25);
     setMessages([...conversation, { id: assistantId, role: 'assistant', content: '' }]);
@@ -936,49 +951,17 @@ export default function App() {
               )}
               <div ref={chatBottom} />
             </div>
-            <form
-              className="chat-composer"
-              onSubmit={(e) => {
-                e.preventDefault();
-                void ask();
-              }}
-            >
-              <label className="sr-only" htmlFor="question">
-                向网页提问
-              </label>
-              <textarea
-                id="question"
-                placeholder={
-                  report
-                    ? '关于这个网页，你想了解什么？'
-                    : ai
-                      ? '直接提问，或发送网址让 Agent 分析…'
-                      : '先设置模型，即可开始 Agent 对话…'
-                }
-                value={draft}
-                onChange={(e) => setDraft(e.target.value)}
-                disabled={!!busy}
-                maxLength={4000}
-                rows={2}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' && !e.shiftKey && !e.nativeEvent.isComposing) {
-                    e.preventDefault();
-                    void ask();
-                  }
-                }}
-              />
-              <div className="composer-bottom">
-                <span>{ai ? '工具驱动 · 有据可循' : '打开模型设置，保存 Key 即可对话'}</span>
-                <button
-                  type={busy === 'chat' ? 'button' : 'submit'}
-                  disabled={busy !== 'chat' && (!!busy || !draft.trim())}
-                  onClick={busy === 'chat' ? () => abort.current?.abort() : undefined}
-                  aria-label={busy === 'chat' ? '停止回答' : '发送问题'}
-                >
-                  {busy === 'chat' ? <Square size={14} /> : <ArrowRight size={18} />}
-                </button>
-              </div>
-            </form>
+            <AgentComposer
+              error={error}
+              value={draft}
+              onChange={setDraft}
+              onSend={() => void ask()}
+              onStop={() => abort.current?.abort()}
+              busy={!!busy}
+              chatting={busy === 'chat'}
+              hasPage={!!report}
+              ai={ai}
+            />
             <div className="chat-disclaimer">
               {ai
                 ? 'AI 可能出错，请核对原始证据。'

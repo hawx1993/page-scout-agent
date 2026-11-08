@@ -3524,3 +3524,132 @@ h1 {
   padding: 5px;
   color: #6c8a5b;
 }
+
+.chat-composer {
+  position: relative;
+}
+.slash-menu {
+  position: absolute;
+  bottom: calc(100% + 9px);
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: #fffefa;
+  border: 1px solid #d8e3cc;
+  border-radius: 8px;
+  box-shadow: 0 8px 30px #29422a24;
+  overflow: hidden;
+}
+.slash-menu-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 12px;
+  border-bottom: 1px solid #e9eedf;
+  gap: 6px;
+}
+.slash-menu-heading > span {
+  font-size: 10px;
+  font-weight: 600;
+  color: #557447;
+}
+.slash-menu-heading small {
+  font-size: 7px;
+  color: #9aa98b;
+}
+.slash-menu [role='listbox'] {
+  max-height: 236px;
+  overflow-y: auto;
+  padding: 5px;
+  scrollbar-width: thin;
+}
+.slash-menu [role='option'] {
+  display: flex;
+  width: 100%;
+  text-align: left;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 7px;
+  background: none;
+  border: 0;
+  border-radius: 5px;
+  color: #688355;
+}
+.slash-menu [role='option'].selected {
+  background: #edf4e3;
+}
+.slash-menu [role='option'] > span:nth-child(2) {
+  flex: 1;
+  min-width: 0;
+}
+.slash-menu strong {
+  display: block;
+  font-size: 11px;
+  font-weight: 550;
+}
+.slash-menu small {
+  display: block;
+  font-size: 8px;
+  color: #95a687;
+  margin-top: 4px;
+  line-height: 1.6;
+}
+.slash-command-icon {
+  width: 24px;
+  height: 27px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dde6d2;
+  background: #f7faef;
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: monospace;
+}
+.slash-menu-note {
+  border-top: 1px solid #e9eedf;
+  background: #f8faf3;
+  padding: 8px 12px;
+  font-size: 8px;
+  color: #8a9e76;
+}
+.composer-bottom > .slash-trigger {
+  background: #f4f7ed;
+  color: #7a9466;
+  width: 23px;
+  height: 23px;
+  border: 1px solid #e1e9d5;
+}
+.composer-bottom > .slash-trigger:hover {
+  background: #e5efd9;
+}
+.composer-bottom > .slash-trigger:disabled {
+  background: #f4f7ed;
+  color: #bdcbb2;
+}
+.composer-bottom > .slash-trigger + span {
+  margin-left: 7px;
+  margin-right: auto;
+}
+.slash-argument-hint {
+  font-size: 9px;
+  color: #8aa471;
+  padding: 1px 0 8px;
+}
+.chat-composer textarea[role='combobox'] {
+  display: block;
+}
+@media (max-width: 520px) {
+  .slash-menu [role='option'] {
+    padding: 10px 8px;
+  }
+  .slash-menu-heading small {
+    font-size: 7px;
+  }
+  .slash-menu strong {
+    font-size: 12px;
+  }
+  .slash-menu [role='listbox'] {
+    max-height: 220px;
+  }
+}
