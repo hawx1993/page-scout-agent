@@ -1,6 +1,6 @@
 <div align="center">
 
-# SiteLens
+# page scout agent
 
 ### 把一个网址，变成一场有依据的对话。
 
@@ -12,17 +12,17 @@
 
 </div>
 
-![SiteLens 实际工作台：Vite 文档的 Lighthouse 评分、页面快照和 DeepSeek 总结](docs/images/09-overview-with-agent.jpg)
+![page scout agent 实际工作台：Vite 文档的 Lighthouse 评分、页面快照和 DeepSeek 总结](docs/images/09-overview-with-agent.jpg)
 
 你打开一个网站，可能想知道：这篇长文讲了什么？它用了哪些前端技术？手机端为什么加载慢？SEO 哪些地方值得学习？
 
-**SiteLens 把这些问题放进同一个工作台。** 输入公开网址，左侧查看真实页面、检测结果和证据，右侧直接追问 Agent。回答中的引用可以点回正文；性能分数来自实际运行的 Lighthouse；技术判断会说明依据与置信度。
+**page scout agent 把这些问题放进同一个工作台。** 输入公开网址，左侧查看真实页面、检测结果和证据，右侧直接追问 Agent。回答中的引用可以点回正文；性能分数来自实际运行的 Lighthouse；技术判断会说明依据与置信度。
 
 这份 README 按一次真实使用流程编写：我们在本地输入 `https://vite.dev/guide/`，完成分析、快捷总结、引用跳转、SEO 检查、CrUX 查询和报告导出。下面的图片都是 **2026-11-08 的实际界面截图**，没有填入演示分数或模拟模型回答。
 
 ## 你可以用它做什么？
 
-| 你想解决的问题           | 在 SiteLens 中怎么做                     | 你得到什么                                          |
+| 你想解决的问题           | 在 page scout agent 中怎么做             | 你得到什么                                          |
 | ------------------------ | ---------------------------------------- | --------------------------------------------------- |
 | 长文太长，先抓住重点     | `/总结网页内容大纲`                      | 主题、章节要点、关键结论与原文引用                  |
 | 看到一个网站，想研究实现 | `/分析网站前端技术` 或进入「技术栈」     | 可观测指纹、资源线索、置信度与无法确认的部分        |
@@ -78,7 +78,7 @@ https://vite.dev/guide/
 
 点击「开始分析」后，界面会显示公开地址验证、浏览器渲染、正文提取和 Lighthouse 检测的进度。抓取完成后会自动运行当前所选设备的评分，通常需要 **30–120 秒**。过程中可以停止；失败时会显示原因，并保留已抓取的页面供继续阅读。
 
-![SiteLens 正在渲染真实的 Vite 文档页面](docs/images/01-analysis-running.jpg)
+![page scout agent 正在渲染真实的 Vite 文档页面](docs/images/01-analysis-running.jpg)
 
 这次分析得到页面标题 **Getting Started | Vite**、英文正文、**11 段内容证据、16 个标题和 113 个链接**。左侧的页面快照帮助确认：分析的是你输入的那个页面。
 
@@ -255,4 +255,4 @@ npm run format:check
 
 ## License
 
-SiteLens 使用 [MIT License](LICENSE)。截图中的 Vite 页面内容与品牌归各自权利人所有；本文用于展示一次真实的公开网页分析流程，不表示获得 Vite 官方背书。
+page scout agent 使用 [MIT License](LICENSE)。截图中的 Vite 页面内容与品牌归各自权利人所有；本文用于展示一次真实的公开网页分析流程，不表示获得 Vite 官方背书。

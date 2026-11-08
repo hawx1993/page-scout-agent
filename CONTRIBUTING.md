@@ -1,6 +1,6 @@
 # Contributing
 
-感谢参与 SiteLens。欢迎报告问题、改进规则、增加可验证的技术指纹或完善文档。
+感谢参与 page scout agent。欢迎报告问题、改进规则、增加可验证的技术指纹或完善文档。
 
 1. 使用 Node.js 22.19+，执行 `npm ci`。
 2. 准备 Chrome / Chromium，然后 `npm run dev`。

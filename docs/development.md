@@ -1,4 +1,4 @@
-# SiteLens 开发、配置与部署手册
+# page scout agent 开发、配置与部署手册
 
 [返回产品体验说明](../README.md) · [架构与设计取舍](architecture.md)
 

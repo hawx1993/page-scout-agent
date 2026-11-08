@@ -1,6 +1,6 @@
 > 此文件来自 2026-11-08 的实际 UI 导出，省略了正文证据章节，保留检测结果。数值是当时本机的单次实验室结果，不代表该网站当前表现。
 
-# SiteLens · Getting Started | Vite
+# page scout agent · Getting Started | Vite
 
 URL: https://vite.dev/guide/
 
